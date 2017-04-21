@@ -1,7 +1,7 @@
 package com.caifeng.function.support.log.service;
 
-import com.lgb.function.support.log.LogContent;
-import com.lgb.function.support.log.repository.LogRepositoryI;
+import com.caifeng.function.support.log.LogContent;
+import com.caifeng.function.support.log.repository.LogRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

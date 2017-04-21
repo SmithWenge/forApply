@@ -1,7 +1,7 @@
 package com.caifeng.function.support.dictionary.impl;
 
-import com.lgb.function.support.dictionary.Dictionary;
-import com.lgb.function.support.dictionary.IDictionaryRepository;
+import com.caifeng.function.support.dictionary.Dictionary;
+import com.caifeng.function.support.dictionary.IDictionaryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
