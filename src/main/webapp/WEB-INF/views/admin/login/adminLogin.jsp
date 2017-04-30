@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>大连交通大学后勤报修系统</title>
+    <title>百融金融</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -24,7 +24,7 @@
         </button>
         <div class="profile__form">
             <div class="profile__fields">
-                <form action="${contextPath}/login.action" method="post">
+                <form action="${contextPath}/admin/login.action" method="post">
                     <div class="field">
                         <input type="text" id="adminLoginName" name="adminLoginName" class="input" />
                         <label for="adminLoginName" class="label">用户名</label>

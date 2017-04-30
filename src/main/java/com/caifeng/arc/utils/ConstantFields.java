@@ -25,6 +25,7 @@ public class ConstantFields {
     public static final String CREDIT_AMOUNT_ERROR_MESSAGE = "贷款金额输入有误";
     /* 错误信息 */
     public static final String ERROR_MESSAGE = "服务器出现问题";
+    public static final String USERNAME_PASS_ERROR = "用户名或者密码错误";
 
     public static final String ONE_THOUSAND = "1000";
     public static final String TWO_THOUSAND = "2000";
