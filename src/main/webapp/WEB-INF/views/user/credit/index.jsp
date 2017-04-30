@@ -2,13 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-<!DOCTYPE html>
-<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link href="${contextPath}/static/plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
     <title>百融金融</title>
+    <link href="${contextPath}/static/plugins/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <style>
         body{
             background: #24252A;
@@ -92,4 +91,3 @@
 <hr style="margin-top: 280px;margin-bottom:10px" />
 <div><p>© 2017 版权所有 宁波百融信息技术有限公司</p></div>
 </body>
-</html>

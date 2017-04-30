@@ -3,17 +3,8 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
-<!DOCTYPE html>
-<html>
 <head>
-    <meta charset="UTF-8">
-
-    <link href="${contextPath}/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <title>百融金融</title>
     <style>
-        body{
-            background: #24252A;
-        }
         .header{
             /*width: 800px;*/
             margin: 60px auto;
@@ -28,30 +19,10 @@
             margin: 0 auto;
             text-align: center;
         }
-        hr{
-            margin-top: 27px;
-        }
-        p{
-            font-family: "微软雅黑";
-            color: #999;
-            font-size: 19px;
-            text-align: center;
-
-        }
-        .wht{
-            color: #fff;
-            font-weight: 800;
-            font-size: 22px;
-            /*text-decoration: underline;*/
-        }
-        label{
-            color: #caa475;
-            font-size: 18px;
-            line-height: 20px;
-            font-weight: 100;
-        }
-
     </style>
+    <meta charset="UTF-8">
+    <link href="${contextPath}/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <title>百融金融</title>
 </head>
 <body>
 <div class="header">
@@ -60,14 +31,43 @@
     <hr />
     <p><span class="wht"><i>第一时间  </i></span>为您审批，已有<span class="wht"><i>1000000+</i></span>人申请</p>
 </div>
+
+<style>
+    body{
+        background: #24252A;
+    }
+    hr{
+        margin-top: 27px;
+    }
+    p{
+        font-family: "微软雅黑";
+        color: #999;
+        font-size: 19px;
+        text-align: center;
+
+    }
+    .wht{
+        color: #fff;
+        font-weight: 800;
+        font-size: 22px;
+        /*text-decoration: underline;*/
+    }
+    label{
+        color: #caa475;
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 100;
+    }
+
+</style>
 <div class="content">
-    <form class="form-horizontal" action="${contextPath}/user">
+    <form class="form-horizontal" action="${contextPath}/user/credit/add.action" method="post" id="creditAddForm">
         <div class="form-group">
             <label for="userName" class="col-md-4 control-label">姓名</label>
             <div class="col-md-5">
                 <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入您的真实姓名                                                   (*必填*)">
             </div>
-</div>
+        </div>
         <div class="form-group">
             <label for="creditAmount" class="col-sm-4 control-label">借款金额</label>
             <div class="col-md-5">
@@ -83,7 +83,7 @@
         <div class="form-group">
             <label for="userSex" class="col-sm-4 control-label">性别</label>
             <div class="col-md-5">
-                <tags:dicselect name="userSex" key="userSex" value="0" id="userSex" />
+                <tags:dicselect name="userSex" key="userSex" value="1" id="userSex" />
             </div>
         </div>
         <div class="form-group">
@@ -148,5 +148,86 @@
         </div>
     </form>
 </div>
+
+<script type="text/javascript" src="${contextPath}/static/plugins/jquery/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="${contextPath}/static/plugins/jquery-validate/jquery.validate.js"></script>
+<script type="text/javascript" src="${contextPath}/static/plugins/confirm/jquery.confirm.js"></script>
+<script type="text/javascript" src="${contextPath}/static/plugins/cropper/cropper.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        // 数字验证
+        jQuery.validator.addMethod("shuzi", function(value, element) {
+            return this.optional(element) || /^[0-9]+$/.test(value);
+        }, "请输入数字");
+
+        // 电话号验证
+        jQuery.validator.addMethod("dianhua", function(value, element) {
+            return this.optional(element) || /^[0-9\-]+$/.test(value);
+        }, "请输入正确格式的电话号");
+
+        $('#creditAddForm').validate({
+            rules: {
+                userName: {
+                    required: true
+                },
+                userTel: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 16,
+                    dianhua: true
+                },
+                userAge: {
+                    required: true,
+                    shuzi: true
+                },
+                userPost: {
+                    required: true
+                },
+                zhimaNum: {
+                    required: true,
+                    shuzi: true
+                },
+                huabeiLimit: {
+                    required: true,
+                    shuzi: true
+                },
+                jiebeiLimit: {
+                    required: false,
+                    shuzi: true
+                },
+                creditCardLimit: {
+                    required: false,
+                    shuzi: true
+                },
+                jiedaibaoLimit: {
+                    required: false,
+                    shuzi: true
+                },
+                message:{
+                    userName: {
+                        required: "请输入您的真实姓名"
+                    },
+                    userTel: {
+                        required: "请填写座机号码或手机号码",
+                        minlength: "电话号码的长度为8到16",
+                        maxlength: "电话号码的长度为8到16"
+                    },
+                    userAge: {
+                        required: "请输入您的真实年龄"
+                    },
+                    userPost: {
+                        required: "请输入您的岗位职务"
+                    },
+                    zhimaNum: {
+                        required: "请输入您的芝麻信用分"
+                    },
+                    huabeiLimit: {
+                        required: "请输入您的花呗额度"
+                    }
+                }
+            }
+        });
+    });
+</script>
 </body>
-</html>
