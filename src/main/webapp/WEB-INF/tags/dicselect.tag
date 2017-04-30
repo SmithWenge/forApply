@@ -1,10 +1,10 @@
 <%@tag pageEncoding="UTF-8"%>
-<%@ taglib prefix="dict" uri="http://www.lgb.com/tags/dic" %>
 <%@ attribute name="id" type="java.lang.String" required="false"%>
 <%@ attribute name="name" type="java.lang.String" required="true"%>
 <%@ attribute name="key" type="java.lang.String" required="true"%>
 <%@ attribute name="value" type="java.lang.String" required="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="dict" uri="http://www.caifeng.com/tags/dic" %>
 
 <%
     String tagId = id;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by wenge on 2017/4/21.
+ * Created by shihanwen on 2017/4/21.
  */
 @Controller
 @RequestMapping("/admin")
