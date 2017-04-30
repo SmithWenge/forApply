@@ -17,6 +17,15 @@ public class ConstantFields {
     public static final String OPERATION_SUCCESS_MESSAGE = "操作成功";
     /* 操作失败消息 */
     public static final String OPERATION_FAILURE_MESSAGE = "操作失败";
+    /* 错误页面输出信息key */
+    public static final String ERROR_MESSAGE_KEY = "errorMessage";
+    /* 贷款金额输入有误输出信息 */
+    public static final String CREDIT_AMOUNT_ERROR_MESSAGE = "贷款金额输入有误";
+
+    public static final String ONE_THOUSAND = "1000";
+    public static final String TWO_THOUSAND = "2000";
+    public static final String THREE_THOUSAND = "3000";
+    public static final String FIVE_THOUSAND = "5000";
 
     /* 默认配置的背景色 */
     public static final String DEFAULT_BACKGROUND_COLOR_SETTING = " FFFECE";

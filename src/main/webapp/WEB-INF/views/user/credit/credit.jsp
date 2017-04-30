@@ -71,7 +71,7 @@
         <div class="form-group">
             <label for="creditAmount" class="col-sm-4 control-label">借款金额</label>
             <div class="col-md-5">
-                <input type="text" class="form-control" name="creditAmount" id="creditAmount" value="${creditAmount}" placeholder="请输入您的借款金额                                                   (*必填*)">
+                <input type="text" class="form-control" name="creditAmount" id="creditAmount" value="${creditAmount}" readonly>
             </div>
         </div>
         <div class="form-group">
