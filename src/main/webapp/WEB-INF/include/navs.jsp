@@ -43,12 +43,12 @@
             </div>
             <ul class="submenu">
                 <li>
-                    <a id="application" href="">
+                    <a id="application" href="${contextPath}/admin/creditList/routePage.action">
                         申请列表
                     </a>
                 </li>
                 <li>
-                    <a id="updateList" href="">
+                    <a id="updateList" href="${contextPath}/admin/creditList/routePage.action">
                         更新系统缓存
                     </a>
                 </li>
@@ -63,6 +63,19 @@
                 <li>
                     <a id="colour" href="">
                         待定
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="link" id="logManageNav">
+                日志管理
+                <i class="fa fa-chevron-down"></i>
+            </div>
+            <ul class="submenu">
+                <li>
+                    <a id="log" href="${contextPath}/admin/log/routePage.action">
+                        查看日志
                     </a>
                 </li>
             </ul>

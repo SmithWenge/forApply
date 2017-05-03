@@ -24,7 +24,8 @@ public class HomeRepository implements HomeRepositoryI {
             if (home.getListState() > 0) {
                 sql.append(" AND listState = ?");
                 list.add(home.getListState());
-            }if (!Strings.isNullOrEmpty(home.getNowaday())) {
+            }
+            if (!Strings.isNullOrEmpty(home.getNowaday())) {
                 sql.append(" AND listDate = ?");
                 list.add(home.getNowaday());
             }

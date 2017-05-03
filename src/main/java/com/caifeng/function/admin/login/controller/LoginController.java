@@ -23,6 +23,11 @@ public class LoginController {
     @Autowired
     private LoginServiceI loginService;
 
+    @RequestMapping(value = "/routeLogin")
+    public String routeLogin() {
+        return "admin/login/adminLogin";
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(HttpSession session, AdminUser user) {
         AdminUser adminUser = loginService.queryAdminUser(user);
@@ -42,15 +47,8 @@ public class LoginController {
 
     @RequestMapping(value = "/routePass", method = RequestMethod.GET)
     public ModelAndView routePass(HttpSession session) {
-        AdminUser loginUser = (AdminUser) session.getAttribute(ConstantFields.SESSION_ADMIN_KEY);
-        Optional<AdminUser> optional = Optional.fromNullable(loginUser);
         ModelAndView mav = new ModelAndView();
-
-        if (optional.isPresent()) {
-            mav.setViewName("admin/login/adminPassword");
-        } else{
-            mav.setViewName("admin/login/adminLogin");
-        }
+        mav.setViewName("admin/login/adminPassword");
 
         return mav;
     }

@@ -1,5 +1,7 @@
 package com.caifeng.function.user.credit;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -24,6 +26,44 @@ public class Credit {
     private int listState;
     private Date listTime;
     private Date listDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date listStartDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date listStopDate;
+    private String listDateStr;
+    private String listTimeStr;
+
+    public Date getListStartDate() {
+        return listStartDate;
+    }
+
+    public void setListStartDate(Date listStartDate) {
+        this.listStartDate = listStartDate;
+    }
+
+    public Date getListStopDate() {
+        return listStopDate;
+    }
+
+    public void setListStopDate(Date listStopDate) {
+        this.listStopDate = listStopDate;
+    }
+
+    public String getListTimeStr() {
+        return listTimeStr;
+    }
+
+    public void setListTimeStr(String listTimeStr) {
+        this.listTimeStr = listTimeStr;
+    }
+
+    public String getListDateStr() {
+        return listDateStr;
+    }
+
+    public void setListDateStr(String listDateStr) {
+        this.listDateStr = listDateStr;
+    }
 
     public Date getListDate() {
         return listDate;

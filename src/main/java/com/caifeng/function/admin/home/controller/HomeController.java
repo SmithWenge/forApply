@@ -21,18 +21,10 @@ public class HomeController {
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView routeLogin(HttpSession session) {
-        AdminUser loginUser = (AdminUser) session.getAttribute(ConstantFields.SESSION_ADMIN_KEY);
-        Optional<AdminUser> optional = Optional.fromNullable(loginUser);
         ModelAndView mav = new ModelAndView();
-
-        if (optional.isPresent()) {
-            Home home = homeService.selectNumsForHome();
-            mav.addObject("home", home);
-            mav.setViewName("admin/home/index");
-        } else {
-
-            mav.setViewName("admin/login/adminLogin");
-        }
+        Home home = homeService.selectNumsForHome();
+        mav.addObject("home", home);
+        mav.setViewName("admin/home/index");
 
         return mav;
     }

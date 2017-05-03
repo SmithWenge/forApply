@@ -153,7 +153,6 @@
 
     <!-- Init the Dictionary -->
     <!--<bean id="dictionaryManager" class="com.lgb.function.support.dictionary.impl.DefaultDictionaryManager" />-->
-
     <beans:bean class="com.caifeng.arc.web.tag.DictionaryTag" init-method="init" lazy-init="false">
         <beans:property name="manager" ref="defaultDictionaryManager" />
     </beans:bean>
@@ -172,4 +171,20 @@
             </beans:bean>
         </beans:property>
     </beans:bean>
+
+    <!-- Login interceptor -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**" />
+            <beans:bean class="com.caifeng.arc.interceptor.AdminLoginInterceptor">
+                <beans:property name="excludedUris">
+                    <beans:list>
+                        <beans:value>/admin/routeLogin.action</beans:value>
+                        <beans:value>/admin/login.action</beans:value>
+                        <beans:value>/admin/resetPass.action</beans:value>
+                    </beans:list>
+                </beans:property>
+            </beans:bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans:beans>
