@@ -7,4 +7,5 @@ import com.caifeng.function.admin.login.AdminUser;
  */
 public interface LoginServiceI {
     AdminUser queryAdminUser(AdminUser user);
+    AdminUser resetPassword(AdminUser adminUser);
 }

@@ -7,4 +7,5 @@ import com.caifeng.function.admin.login.AdminUser;
  */
 public interface LoginRepositoryI {
     AdminUser selectAdminUser(AdminUser user);
+    boolean resetPassword(AdminUser adminUser);
 }

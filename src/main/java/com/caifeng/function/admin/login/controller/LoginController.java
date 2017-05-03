@@ -23,19 +23,6 @@ public class LoginController {
     @Autowired
     private LoginServiceI loginService;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String routeLogin(HttpSession session) {
-        AdminUser loginUser = (AdminUser) session.getAttribute(ConstantFields.SESSION_ADMIN_KEY);
-        Optional<AdminUser> optional = Optional.fromNullable(loginUser);
-        if (optional.isPresent()) {
-
-            return "admin/home/index";
-        } else {
-
-            return "admin/login/adminLogin";
-        }
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(HttpSession session, AdminUser user) {
         AdminUser adminUser = loginService.queryAdminUser(user);
@@ -47,10 +34,47 @@ public class LoginController {
             mav.setViewName("error/errorInfo");
         } else {
             session.setAttribute(ConstantFields.SESSION_ADMIN_KEY, adminUser);
-            mav.setViewName("admin/home/index");
+            mav.setViewName("redirect:/admin/home.action");
         }
 
         return mav;
+    }
+
+    @RequestMapping(value = "/routePass", method = RequestMethod.GET)
+    public ModelAndView routePass(HttpSession session) {
+        AdminUser loginUser = (AdminUser) session.getAttribute(ConstantFields.SESSION_ADMIN_KEY);
+        Optional<AdminUser> optional = Optional.fromNullable(loginUser);
+        ModelAndView mav = new ModelAndView();
+
+        if (optional.isPresent()) {
+            mav.setViewName("admin/login/adminPassword");
+        } else{
+            mav.setViewName("admin/login/adminLogin");
+        }
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/password", method = RequestMethod.POST)
+    public ModelAndView password(AdminUser adminUser, HttpSession session) {
+        ModelAndView mav = new ModelAndView("admin/login/adminLogin");
+        AdminUser newUser = loginService.resetPassword(adminUser);
+        Optional<AdminUser> optional = Optional.fromNullable(newUser);
+
+        if (optional.isPresent()) {
+            session.removeAttribute(ConstantFields.SESSION_ADMIN_KEY);
+
+            return mav;
+        }
+
+        return new ModelAndView("redirect:/admin/routePass.action");
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpSession session) {
+        session.removeAttribute(ConstantFields.SESSION_ADMIN_KEY);
+
+        return "admin/login/adminLogin";
     }
 
 }

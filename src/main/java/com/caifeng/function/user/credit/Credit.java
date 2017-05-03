@@ -1,5 +1,7 @@
 package com.caifeng.function.user.credit;
 
+import java.util.Date;
+
 /**
  * Created by shihanwen on 2017/4/30.
  */
@@ -19,6 +21,33 @@ public class Credit {
     private String jiebeiLimit; //借呗额度
     private String creditCardLimit; //信用卡额度
     private String jiedaibaoLimit; //借贷宝额度
+    private int listState;
+    private Date listTime;
+    private Date listDate;
+
+    public Date getListDate() {
+        return listDate;
+    }
+
+    public void setListDate(Date listDate) {
+        this.listDate = listDate;
+    }
+
+    public Date getListTime() {
+        return listTime;
+    }
+
+    public void setListTime(Date listTime) {
+        this.listTime = listTime;
+    }
+
+    public int getListState() {
+        return listState;
+    }
+
+    public void setListState(int listState) {
+        this.listState = listState;
+    }
 
     public void setCreditListId(String creditListId) {
         this.creditListId = creditListId;

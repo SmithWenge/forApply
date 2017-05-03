@@ -1,12 +1,14 @@
 package com.caifeng.function.user.credit.service;
 
-import com.caifeng.function.admin.creditList.repository.CreditListRepositoryI;
 import com.caifeng.function.support.log.LogContent;
 import com.caifeng.function.support.log.repository.LogRepositoryI;
 import com.caifeng.function.user.credit.Credit;
 import com.caifeng.function.user.credit.repository.CreditRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+
 
 /**
  * Created by shihanwen on 2017/4/30.
@@ -20,6 +22,10 @@ public class CreditService implements CreditServiceI {
 
     @Override
     public Boolean add(Credit credit) {
+        credit.setListState(1);
+        credit.setListTime(new Date());
+        credit.setListDate(new Date());
+
         if (repository.insert(credit)) {
             LogContent logContent = new LogContent(credit.getUserName(), "提交申请贷款" + credit.getCreditAmount(), 1, 3);
             logRepository.insertLog(logContent);

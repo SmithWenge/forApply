@@ -8,6 +8,15 @@ public class AdminUser extends Entry {
     private String adminLoginName;
     private String adminId;
     private String adminUserTel;
+    private String adminPassWordNew;
+
+    public String getAdminPassWordNew() {
+        return adminPassWordNew;
+    }
+
+    public void setAdminPassWordNew(String adminPassWordNew) {
+        this.adminPassWordNew = adminPassWordNew;
+    }
 
     public void setAdminUserName(String adminUserName) {
         this.adminUserName = adminUserName;

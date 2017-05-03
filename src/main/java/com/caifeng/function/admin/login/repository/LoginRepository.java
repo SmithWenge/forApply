@@ -47,4 +47,15 @@ public class LoginRepository implements LoginRepositoryI {
             return user;
         }
     }
+
+    public boolean resetPassword(AdminUser adminUser) {
+        String sql = "UPDATE apply_admin SET adminPassWord = ? WHERE adminLoginName = ? AND adminPassWord = ? AND deleteFlag = 0";
+        Object[] args = {
+                adminUser.getAdminPassWordNew(),
+                adminUser.getAdminLoginName(),
+                adminUser.getAdminPassWord()
+        };
+
+        return jdbcTemplate.update(sql, args) == 1;
+    }
 }
