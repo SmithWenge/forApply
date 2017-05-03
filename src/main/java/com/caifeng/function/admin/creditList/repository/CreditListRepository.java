@@ -7,8 +7,10 @@ import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import sun.jdbc.odbc.JdbcOdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +22,8 @@ import java.util.List;
  */
 @Repository
 public class CreditListRepository implements CreditListRepositoryI {
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
     @Autowired
     private RepositoryUtils repositoryUtils;
 
@@ -53,16 +57,18 @@ public class CreditListRepository implements CreditListRepositoryI {
         sql.append(" ORDER BY listTime DESC");
 
         try {
+
             return repositoryUtils.select4Page(sql.toString(), pageable, args, new SelectForPageRowMapper());
         } catch (Exception e) {
+
             return null;
         }
     }
 
-    class SelectForPageRowMapper implements RowMapper {
+    class SelectForPageRowMapper implements RowMapper<Credit> {
 
         @Override
-        public Object mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+        public Credit mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             Credit credit = new Credit();
             credit.setCreditListId(resultSet.getString("creditListId"));
             credit.setCreditAmount(resultSet.getString("creditAmount"));
@@ -90,7 +96,44 @@ public class CreditListRepository implements CreditListRepositoryI {
             credit.setJiedaibaoLimit(Strings.isNullOrEmpty(jiedaibaoLimit) ? "无": jiedaibaoLimit);
 
             return credit;
-
         }
+    }
+
+
+    @Override
+    public Credit select(String creditListId) {
+        String sql = "SELECT creditListId, creditAmount, userName, userTel, userSex, userAge, workUnit, userPost, unitTel, zhimaNum, huabeiLimit, jiebeiLimit, creditCardLimit, jiedaibaoLimit, listState, listDate, listTime FROM apply_creditlist WHERE deleteFlag = 0 AND creditListId = ?";
+        Object[] args = {
+                creditListId
+        };
+
+        try {
+
+            return jdbcTemplate.queryForObject(sql, args, new SelectForPageRowMapper());
+        } catch (Exception e) {
+
+            return null;
+        }
+    }
+
+    @Override
+    public Boolean delete(String creditListId) {
+        String sql = "UPDATE apply_creditlist SET deleteFlag = 1 WHERE creditListId = ?";
+        Object[] args = {
+                creditListId
+        };
+
+        return jdbcTemplate.update(sql, args) == 1;
+    }
+
+    @Override
+    public Boolean update(Credit credit) {
+        String sql = "UPDATE apply_creditlist SET listState = ? WHERE creditListId = ?";
+        Object[] args = {
+                credit.getListState(),
+                credit.getCreditListId()
+        };
+
+        return jdbcTemplate.update(sql, args) == 1;
     }
 }

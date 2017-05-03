@@ -29,7 +29,7 @@ public class HomeService implements HomeServiceI {
         home.setNumOfDayShenHeFailed(homeRepository.selectNumsForHome(home));
 
         home.setNowaday(null);
-        home.setNumOfList(homeRepository.selectNumsForHome(home));
+        home.setNumOfShenHeFailed(homeRepository.selectNumsForHome(home));
 
         home.setListState(1);
         home.setNumOfUnShenhe(homeRepository.selectNumsForHome(home));
@@ -37,8 +37,8 @@ public class HomeService implements HomeServiceI {
         home.setListState(2);
         home.setNumOfShenheSuccess(homeRepository.selectNumsForHome(home));
 
-        home.setListState(3);
-        home.setNumOfShenHeFailed(homeRepository.selectNumsForHome(home));
+        home.setListState(0);
+        home.setNumOfList(homeRepository.selectNumsForHome(home));
 
         return home;
     }

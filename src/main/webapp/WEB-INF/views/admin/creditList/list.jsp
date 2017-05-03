@@ -11,7 +11,7 @@
         </a>
       </li>
       <li role="presentation" style="margin-top: 2px;">
-        <form class="form-inline" action="${contextPath}/admin/creditList/pageSearch.action" method="post">
+        <form class="form-inline" action="" method="post" name="creditSearchForm">
           <div class="form-group">
             <label class="control-label" for="listState">状态</label>
             <select class="form-control" id="listState" name="listState" style="width: 80px">
@@ -93,8 +93,8 @@
             <label for="listStopDate" class="control-label">至</label>
             <input type="date" class="form-control" id="listStopDate" name="listStopDate" style="width:100px" value="${sessionScope.searchCredit.listStopDate}">
           </div>
-          <button type="submit" class="btn btn-default">查询</button>
-          <button type="submit" class="btn btn-default">导出</button>
+          <button type="submit" class="btn btn-default" onclick="document.creditSearchForm.action='${contextPath}/admin/creditList/pageSearch.action';document.creditSearchForm.submit();">查询</button>
+          <button type="submit" class="btn btn-default" onclick="document.creditSearchForm.action='${contextPath}/admin/creditList/searchOutput.action';document.creditSearchForm.submit();">导出</button>
         </form>
       </li>
       <li role="presentation" style="float: right; margin-top: 2px;">
@@ -152,13 +152,13 @@
                 <tags:dictd groupValue="listState" itemKey="${credit.listState}" />
                 <td>${credit.listTimeStr}</td>
                 <td>
-                  <a href="" style="text-decoration: none;">
+                  <a href="${contextPath}/admin/creditList/routeDetail/${credit.creditListId}.action" style="text-decoration: none;">
                     <button type="button" class="btn btn-warning">详情</button>
                   </a>
-                  <a href="" style="text-decoration: none;">
+                  <a href="${contextPath}/admin/creditList/routeEdit/${credit.creditListId}.action" style="text-decoration: none;">
                     <button type="button" class="btn btn-warning">编辑</button>
                   </a>
-                  <a href="" style="text-decoration: none;" >
+                  <a href="${contextPath}/admin/creditList/delete/${credit.creditListId}.action" style="text-decoration: none;" >
                     <button type="button" class="btn btn-danger">删除</button>
                   </a>
                 </td>

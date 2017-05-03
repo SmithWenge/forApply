@@ -31,7 +31,7 @@
     <ul id="accordion" class="accordion">
         <li>
             <div class="link">
-                <a id="index_info" href="${contextPath}/admin/index.action">
+                <a id="index_info" href="${contextPath}/admin/home.action">
                     首页
                 </a>
             </div>

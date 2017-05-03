@@ -10,4 +10,7 @@ import org.springframework.data.domain.Pageable;
 public interface CreditListRepositoryI {
 
     Page<Credit> selectForPage(Credit credit, Pageable pageable);
+    Credit select(String creditListId);
+    Boolean delete(String creditListId);
+    Boolean update(Credit credit);
 }

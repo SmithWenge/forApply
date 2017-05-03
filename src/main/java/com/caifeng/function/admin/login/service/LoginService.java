@@ -26,7 +26,7 @@ public class LoginService implements LoginServiceI {
         Optional<AdminUser> optional = Optional.fromNullable(loginUser);
 
         if (optional.isPresent()) {
-            LogContent logContent = new LogContent(user.getAdminLoginName(), "登陆系统", 2, 5);
+            LogContent logContent = new LogContent(loginUser.getAdminUserName(), "登陆系统", 2, 5);
             logRepository.insertLog(logContent);
         }
 
@@ -44,7 +44,7 @@ public class LoginService implements LoginServiceI {
             adminUser.setAdminPassWordNew(PasswordUtils.encrypt(adminUser.getAdminPassWordNew()));
 
             if (loginRepository.resetPassword(adminUser)) {
-                LogContent logContent = new LogContent(adminUser.getAdminLoginName(), "更改密码", 2, 4);
+                LogContent logContent = new LogContent(canLogin.getAdminUserName(), "更改密码", 2, 4);
                 logRepository.insertLog(logContent);
                 adminUser.setAdminPassWord(adminUser.getAdminPassWordNew());
 

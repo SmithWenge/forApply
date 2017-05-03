@@ -12,10 +12,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
@@ -70,5 +72,53 @@ public class CreditListController {
         mav.addObject(ConstantFields.PAGE_KEY, page);
 
         return mav;
+    }
+
+    @RequestMapping(value = "/routeDetail/{creditListId}", method = RequestMethod.GET)
+    public ModelAndView routeDetail(@PathVariable("creditListId") String creditListId, HttpSession session) {
+        ModelAndView mav = new ModelAndView("admin/creditList/detail");
+        Credit credit = creditListService.queryCredit(creditListId);
+        mav.addObject("credit", credit);
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/routeEdit/{creditListId}", method = RequestMethod.GET)
+    public ModelAndView routeEdit(@PathVariable("creditListId") String creditListId, HttpSession session) {
+        ModelAndView mav = new ModelAndView("admin/creditList/edit");
+        Credit credit = creditListService.queryCredit(creditListId);
+        mav.addObject("credit", credit);
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/delete/{creditListId}", method = RequestMethod.GET)
+    public String routeDetail(@PathVariable("creditListId") String creditListId, HttpSession session, RedirectAttributes redirectAttributes) {
+        AdminUser logUser = (AdminUser)session.getAttribute(ConstantFields.SESSION_ADMIN_KEY);
+
+        Boolean tmp = creditListService.remove(creditListId, logUser);
+        if (tmp) {
+
+            redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.OPERATION_SUCCESS_MESSAGE);
+            return "redirect:/admin/creditList/routePage.action";
+        }
+
+        redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.OPERATION_FAILURE_MESSAGE);
+        return "redirect:/admin/creditList/routePage.action";
+    }
+
+    @RequestMapping(value = "/edit")
+    public String edit(Credit credit, HttpSession session,RedirectAttributes redirectAttributes) {
+        AdminUser logUser = (AdminUser)session.getAttribute(ConstantFields.SESSION_ADMIN_KEY);
+
+        Boolean tmp = creditListService.edit(credit, logUser);
+        if (tmp) {
+
+            redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.OPERATION_SUCCESS_MESSAGE);
+            return "redirect:/admin/creditList/routePage.action";
+        }
+
+        redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.OPERATION_FAILURE_MESSAGE);
+        return "redirect:/admin/creditList/routeEdit/" + credit.getCreditListId() + ".action";
     }
 }
