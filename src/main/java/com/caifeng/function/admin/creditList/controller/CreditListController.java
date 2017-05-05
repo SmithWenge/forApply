@@ -1,29 +1,32 @@
 package com.caifeng.function.admin.creditList.controller;
 
+import com.caifeng.arc.excel.output.Excel;
+import com.caifeng.arc.excel.output.ExcelFactory;
+import com.caifeng.arc.excel.output.mapper.CreditExcelMapper;
 import com.caifeng.arc.utils.ConstantFields;
 import com.caifeng.function.admin.creditList.service.CreditListServiceI;
 import com.caifeng.function.admin.login.AdminUser;
 import com.caifeng.function.user.credit.Credit;
 import com.google.common.base.Optional;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -120,5 +123,89 @@ public class CreditListController {
 
         redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.OPERATION_FAILURE_MESSAGE);
         return "redirect:/admin/creditList/routeEdit/" + credit.getCreditListId() + ".action";
+    }
+
+    @RequestMapping(value = "/searchOutput",method = RequestMethod.POST)
+    public void creditListExport(HttpServletResponse response, Credit credit, HttpSession session) {
+        session.setAttribute(ConstantFields.SESSION_CREDIT_SEARCH_KEY, credit);
+
+        List<Credit> records = creditListService.serchForSearchExport(credit);
+        ExcelFactory<Credit> factory = new ExcelFactory<Credit>();
+        File file = new File("贷款申请列表.xls");
+
+        try {
+            WritableWorkbook workbook = factory.createExcel(new FileOutputStream(file),
+                    new Excel("申请列表（检索）", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
+            workbook.write();
+            workbook.close();
+
+            response.setContentType("application/x-export");
+            response.setCharacterEncoding("UTF-8");
+            response.setHeader("Content-Disposition", "attachment; filename=" + java.net.URLEncoder.encode(file.getName(), "UTF-8"));
+            response.setHeader("Content-Length", String.valueOf(file.length()));
+            int length = 0;
+            byte[] buffer = new byte[1024];
+            FileInputStream fis = new FileInputStream(file);
+            OutputStream os = response.getOutputStream();
+            while (-1 != (length = fis.read(buffer, 0, buffer.length))) {
+                os.write(buffer, 0, length);
+            }
+            fis.close();
+            os.flush();
+            os.close();
+        } catch (RowsExceededException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (WriteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            file.delete();
+        }
+    }
+
+    @RequestMapping(value = "/allOutput",method = RequestMethod.GET)
+    public void creditListAllExport(HttpServletResponse response, Credit credit, HttpSession session) {
+        session.setAttribute(ConstantFields.SESSION_CREDIT_SEARCH_KEY, credit);
+
+        List<Credit> records = creditListService.serchForSearchExport(credit);
+        ExcelFactory<Credit> factory = new ExcelFactory<Credit>();
+        File file = new File("贷款申请列表.xls");
+
+        try {
+            WritableWorkbook workbook = factory.createExcel(new FileOutputStream(file),
+                    new Excel("申请列表（检索）", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
+            workbook.write();
+            workbook.close();
+
+            response.setContentType("application/x-export");
+            response.setCharacterEncoding("UTF-8");
+            response.setHeader("Content-Disposition", "attachment; filename=" + java.net.URLEncoder.encode(file.getName(), "UTF-8"));
+            response.setHeader("Content-Length", String.valueOf(file.length()));
+            int length = 0;
+            byte[] buffer = new byte[1024];
+            FileInputStream fis = new FileInputStream(file);
+            OutputStream os = response.getOutputStream();
+            while (-1 != (length = fis.read(buffer, 0, buffer.length))) {
+                os.write(buffer, 0, length);
+            }
+            fis.close();
+            os.flush();
+            os.close();
+        } catch (RowsExceededException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (WriteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            file.delete();
+        }
     }
 }

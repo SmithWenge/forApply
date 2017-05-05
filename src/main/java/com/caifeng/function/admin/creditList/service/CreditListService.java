@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by shihanwen on 2017/4/30.
  */
@@ -61,5 +63,10 @@ public class CreditListService implements CreditListServiceI {
         }
 
         return tmp;
+    }
+
+    @Override
+    public List<Credit> serchForSearchExport(Credit credit) {
+        return creditListRepository.selectForSearchExport(credit);
     }
 }

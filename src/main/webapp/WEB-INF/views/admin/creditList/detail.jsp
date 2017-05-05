@@ -24,7 +24,7 @@
         <table class="table table-hover">
             <tr>
                 <th>贷款业务状态</th>
-                <tags:dictd groupValue="listState" itemKey="${credit.listState}" />
+                <td>${credit.listStateStr}</td>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -36,7 +36,7 @@
                 <th>姓名</th>
                 <td>${credit.userName}</td>
                 <th>性别</th>
-                <tags:dictd groupValue="userSex" itemKey="${credit.userSex}" />
+                <td>${credit.userSexStr}</td>
             </tr>
             <tr>
                 <th>贷款数额</th>

@@ -97,9 +97,10 @@
           <button type="submit" class="btn btn-default" onclick="document.creditSearchForm.action='${contextPath}/admin/creditList/searchOutput.action';document.creditSearchForm.submit();">导出</button>
         </form>
       </li>
-      <li role="presentation" style="float: right; margin-top: 2px;">
-        <button type="button" class="btn btn-danger navbar-btn" id="outputAll" style="margin-top: 0px; margin-bottom: 0px;">导出所有</button>
-      </li>
+
+      <a href="${contextPath}/admin/creditList/allOutput.action" style="float: right; margin-top: 2px;">
+        <button type="button" class="btn btn-danger" id="allOutput" style="margin-top: 0px; margin-bottom: 0px;">导出所有</button>
+      </a>
       <li role="presentation" style="float: right; margin-top: 2px;">
         <button type="button" class="btn btn-warning navbar-btn" id="batchUpgrade" style="margin-top: 0px; margin-bottom: 0px;">选中审核通过</button>
       </li>
@@ -149,7 +150,7 @@
                 <td>${credit.jiebeiLimit}</td>
                 <td>${credit.creditCardLimit}</td>
                 <td>${credit.jiedaibaoLimit}</td>
-                <tags:dictd groupValue="listState" itemKey="${credit.listState}" />
+                <td>${credit.listStateStr}</td>
                 <td>${credit.listTimeStr}</td>
                 <td>
                   <a href="${contextPath}/admin/creditList/routeDetail/${credit.creditListId}.action" style="text-decoration: none;">

@@ -32,6 +32,24 @@ public class Credit {
     private Date listStopDate;
     private String listDateStr;
     private String listTimeStr;
+    private String userSexStr;
+    private String listStateStr;
+
+    public String getListStateStr() {
+        return listStateStr;
+    }
+
+    public void setListStateStr(String listStateStr) {
+        this.listStateStr = listStateStr;
+    }
+
+    public String getUserSexStr() {
+        return userSexStr;
+    }
+
+    public void setUserSexStr(String userSexStr) {
+        this.userSexStr = userSexStr;
+    }
 
     public Date getListStartDate() {
         return listStartDate;

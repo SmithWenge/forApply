@@ -1,4 +1,4 @@
-package com.caifeng.arc.excel;
+package com.caifeng.arc.excel.output;
 
 public class Excel {
     private String sheetName;
