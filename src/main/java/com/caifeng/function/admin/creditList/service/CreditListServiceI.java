@@ -1,5 +1,6 @@
 package com.caifeng.function.admin.creditList.service;
 
+import com.caifeng.arc.exception.BatchRollbackException;
 import com.caifeng.function.admin.login.AdminUser;
 import com.caifeng.function.user.credit.Credit;
 import org.springframework.data.domain.Page;
@@ -17,5 +18,8 @@ public interface CreditListServiceI {
     Credit queryCredit(String creditListId);
     Boolean remove(String creditListId, AdminUser logUser);
     Boolean edit(Credit credit, AdminUser logUser);
-    List<Credit> serchForSearchExport(Credit credit);
+    List<Credit> serchForSearchExport(Credit credit, AdminUser logUser);
+    Boolean batchPass(String batchIds, AdminUser logUser) throws BatchRollbackException;
+    Boolean batchUnPass(String batchIds, AdminUser logUser) throws BatchRollbackException;
+    List<Credit> serchForBatchExport(String batchIds, AdminUser logUser) throws BatchRollbackException;
 }

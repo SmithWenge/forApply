@@ -1,5 +1,6 @@
 package com.caifeng.function.admin.creditList.service;
 
+import com.caifeng.arc.exception.BatchRollbackException;
 import com.caifeng.function.admin.creditList.repository.CreditListRepositoryI;
 import com.caifeng.function.admin.login.AdminUser;
 import com.caifeng.function.support.log.LogContent;
@@ -10,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,7 +70,83 @@ public class CreditListService implements CreditListServiceI {
     }
 
     @Override
-    public List<Credit> serchForSearchExport(Credit credit) {
-        return creditListRepository.selectForSearchExport(credit);
+    public List<Credit> serchForSearchExport(Credit credit, AdminUser logUser) {
+        List<Credit> list = creditListRepository.selectForSearchExport(credit);
+
+        if (list != null) {
+            LogContent logContent = new LogContent(logUser.getAdminUserName(), "导出申请列表", 2, 5);
+            logRepository.insertLog(logContent);
+        }
+
+        return list;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = BatchRollbackException.class)
+    @Override
+    public Boolean batchPass(String batchIds, AdminUser logUser) throws BatchRollbackException {
+        String[] courseIds = batchIds.split(",");
+        int successSum = 0;
+        Credit credit = new Credit();
+
+        for (String courseId : courseIds) {
+            credit.setCreditListId(courseId);
+            credit.setListState(2);
+            successSum += creditListRepository.update(credit) == true ? 1 : 0;
+        }
+
+        if (courseIds.length != successSum) {
+            throw new BatchRollbackException();
+        } else {
+            LogContent logContent = new LogContent(logUser.getAdminUserName(), "批量通过审核贷款单，它们的ID为" + batchIds + "(以逗号隔开)", 2, 4);
+            logRepository.insertLog(logContent);
+
+            return true;
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = BatchRollbackException.class)
+    @Override
+    public Boolean batchUnPass(String batchIds, AdminUser logUser) throws BatchRollbackException {
+        String[] courseIds = batchIds.split(",");
+        int successSum = 0;
+        Credit credit = new Credit();
+
+        for (String courseId : courseIds) {
+            credit.setCreditListId(courseId);
+            credit.setListState(3);
+            successSum += creditListRepository.update(credit) == true ? 1 : 0;
+        }
+
+        if (courseIds.length != successSum) {
+            throw new BatchRollbackException();
+        } else {
+            LogContent logContent = new LogContent(logUser.getAdminUserName(), "批量未通过审核贷款单，它们的ID为" + batchIds + "(以逗号隔开)", 2, 4);
+            logRepository.insertLog(logContent);
+
+            return true;
+        }
+    }
+
+    @Override
+    public List<Credit> serchForBatchExport(String batchIds, AdminUser logUser) throws BatchRollbackException {
+        String[] courseIds = batchIds.split(",");
+        int successSum = 0;
+        Credit credit;
+        List<Credit> list = new ArrayList<>();
+
+        for (String courseId : courseIds) {
+            credit = creditListRepository.select(courseId);
+            successSum += credit != null ? 1 : 0;
+            list.add(credit);
+        }
+
+        if (courseIds.length != successSum) {
+            throw new BatchRollbackException();
+        } else {
+            LogContent logContent = new LogContent(logUser.getAdminUserName(), "批量导出贷款单，它们的ID为" + batchIds + "(以逗号隔开)", 2, 5);
+            logRepository.insertLog(logContent);
+
+            return list;
+        }
     }
 }

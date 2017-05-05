@@ -102,17 +102,20 @@
         <button type="button" class="btn btn-danger" id="allOutput" style="margin-top: 0px; margin-bottom: 0px;">导出所有</button>
       </a>
       <li role="presentation" style="float: right; margin-top: 2px;">
-        <button type="button" class="btn btn-warning navbar-btn" id="batchUpgrade" style="margin-top: 0px; margin-bottom: 0px;">选中审核通过</button>
+        <button type="button" class="btn btn-warning navbar-btn" id="batchPass" style="margin-top: 0px; margin-bottom: 0px;">选中审核通过</button>
       </li>
       <li role="presentation" style="float: right; margin-top: 2px;">
-        <button type="button" class="btn btn-warning navbar-btn" id="batchGraduate" style="margin-top: 0px; margin-bottom: 0px;">选中审核不通过</button>
+        <button type="button" class="btn btn-warning navbar-btn" id="batchUnPass" style="margin-top: 0px; margin-bottom: 0px;">选中审核不通过</button>
       </li>
       <li role="presentation" style="float: right; margin-top: 2px;">
-        <button type="button" class="btn btn-warning navbar-btn" id="output" style="margin-top: 0px; margin-bottom: 0px;">选中导出</button>
+        <button type="button" class="btn btn-warning navbar-btn" id="batchOutput" style="margin-top: 0px; margin-bottom: 0px;">选中导出</button>
       </li>
     </ul>
   </div>
   <div class="panel-body">
+    <input type="button" value="全选" id="All"/>
+    <input type="button" value="不选" id="uncheck"/>
+    <input type="button" value="反选" id="othercheck"/>
     <div class="row" style="margin-top: 5px;">
       <div class="col-md-12">
         <table class="table" id="paginationTable" align="center">
@@ -135,7 +138,7 @@
           <form method="post" id="batchForm" border="1px black solid;">
             <c:forEach items="${page.content}" var="credit" varStatus="status">
               <tr id="batchCheck">
-                <td id="batchCheckBoxId">
+                <td id="batchCheckBoxId">`
                   <label class="checkbox-inline">
                     <input type="checkbox" value="${credit.creditListId}" name="batchId">
                   </label>
@@ -216,22 +219,34 @@
     $('#paginationTable td').css('line-height', $height);
     $('#batchCheck #batchCheckBoxId').css('line-height', '13px');
 
-    $('#departmentId').on('change', function () {
-      var $departmentId = $('#departmentId').val();
-      var major = document.getElementById("majorId");
-      $.ajax({
-        type: 'post',
-        contentType: 'application/json',
-        dataType: 'json',
-        url: '${contextPath}/admin/course/majors/' + $departmentId + '.action',
-        success: function (result) {
-          major.options.length = 0;
-          $.each(result.majors, function (i, item) {
-            major.options.add(new Option(item.majorName, item.majorId));
-          });
+    //选择框批量操作
+    var CheckAll=document.getElementById('All');
+    var UnCheck=document.getElementById('uncheck');
+    var OtherCheck=document.getElementById('othercheck');
+    var paginationTable=document.getElementById('paginationTable');
+    var CheckBox=paginationTable.getElementsByTagName('input');
+    console.log(CheckBox)
+    CheckAll.onclick=function(){
+      for(i=0;i<CheckBox.length;i++){
+        CheckBox[i].checked=true;
+      };
+    };
+    UnCheck.onclick=function(){
+      for(i=0;i<CheckBox.length;i++){
+        CheckBox[i].checked=false;
+      };
+    };
+    OtherCheck.onclick=function(){
+      for(i=0;i<CheckBox.length;i++){
+        if(CheckBox[i].checked==true){
+          CheckBox[i].checked=false;
         }
-      });
-    });
+        else{
+          CheckBox[i].checked=true
+        }
+
+      };
+    };
 
     // 确认提示框设置
     $.confirm.options = {
@@ -246,12 +261,12 @@
       dialogClass: "modal-dialog"
     }
 
-    $('#batchUpgrade').on('click', function () {
-      var actionPath = "${contextPath}/admin/course/batch/upgrade.action";
+    $('#batchPass').on('click', function () {
+      var actionPath = "${contextPath}/admin/creditList/batch/pass.action";
       var $checkLength = $("[name = batchId]:checkbox").filter(":checked").length;
       if ($checkLength > 0 ) {
         $.confirm({
-          text: "您确定要升级这些课程么?",
+          text: "您确定审核通过这些项目吗?",
           confirm: function() {
             $('#batchForm').attr('action', actionPath).submit();
           },
@@ -264,15 +279,37 @@
       }
     });
 
-    $('#batchGraduate').on('click', function () {
-      var actionPath = "${contextPath}/admin/course/batch/graduate.action";
+    $('#batchUnPass').on('click', function () {
+      var actionPath = "${contextPath}/admin/creditList/batch/unpass.action";
       var $checkLength = $("[name = batchId]:checkbox").filter(":checked").length;
 
       if ($checkLength > 0 ) {
         $.confirm({
-          text: "您确定要毕业这些课程么?",
+          text: "您确定不通过这些项目的审核吗?",
           confirm: function() {
             $('#batchForm').attr('action', actionPath).submit();
+          },
+          cancel: function() {
+
+          }
+        });
+      } else {
+
+      }
+    });
+
+    $('#batchOutput').on('click', function () {
+      var actionPath = "${contextPath}/admin/creditList/batch/output.action";
+      var $checkLength = $("[name = batchId]:checkbox").filter(":checked").length;
+
+      if ($checkLength > 0 ) {
+        $.confirm({
+          text: "您确定批量导出这些项目吗?",
+          confirm: function() {
+            $('#batchForm').attr('action', actionPath).submit();
+            for(i=0;i<CheckBox.length;i++){
+              CheckBox[i].checked=false;
+            };
           },
           cancel: function() {
 
