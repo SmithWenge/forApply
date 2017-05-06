@@ -1,30 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+<%@include file="/WEB-INF/include/app/header.jsp"%>
 
-<head>
-    <style>
-        .header{
-            /*width: 800px;*/
-            margin: 60px auto;
-            display: block;
-            margin-bottom: 60px;
-        }
-        .tit{
-            color: #caa475;
-            font-family: "微软雅黑";
-            font-size: 3.2vw;
-            font-weight: 200;
-            margin: 0 auto;
-            text-align: center;
-        }
-    </style>
-    <meta charset="UTF-8">
-    <link href="${contextPath}/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <title>百融金融</title>
-</head>
-<body>
 <div class="header">
     <h1 class="tit"><i>百融金融，极速审批</i></h1>
 
@@ -33,6 +9,20 @@
 </div>
 
 <style>
+    .header{
+        /*width: 800px;*/
+        margin: 60px auto;
+        display: block;
+        margin-bottom: 60px;
+    }
+    .tit{
+        color: #caa475;
+        font-family: "微软雅黑";
+        font-size: 3.2vw;
+        font-weight: 200;
+        margin: 0 auto;
+        text-align: center;
+    }
     body{
         background: #24252A;
     }
@@ -147,7 +137,11 @@
             </div>
         </div>
     </form>
+    <hr style="margin-top: 60px;margin-bottom:10px" />
+    <div><p>© 2017 版权所有 深圳前海采风互联网金融服务有限公司</p></div>
 </div>
+
+
 
 <script type="text/javascript" src="${contextPath}/static/plugins/jquery/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="${contextPath}/static/plugins/jquery-validate/jquery.validate.js"></script>
