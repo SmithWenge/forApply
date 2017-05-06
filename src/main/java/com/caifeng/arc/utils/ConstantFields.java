@@ -33,11 +33,18 @@ public class ConstantFields {
     public static final String THREE_THOUSAND = "3000";
     public static final String FIVE_THOUSAND = "5000";
 
+    public static final String CONFIG_SUCCESS_MESSAGE = "配置成功";
+
     /* 默认配置的背景色 */
     public static final String DEFAULT_BACKGROUND_COLOR_SETTING = " FFFECE";
-    public static final String CONFIG_SUCCESS_MESSAGE = "配置成功";
-    /* 配置表的默认主键 */
-    public static final int DEFAULT_CONFIG_ID = 1;
-    /* 背景色配置Key */
+    public static String SAVE_BACKGROUND_COLOR_SETTING = " FFFECE";
+    public static final String DEFAULT_BACKGROUND_FONT_SETTING = "微软雅黑";
+    public static String SAVE_BACKGROUND_FONT_SETTING = "微软雅黑";
+    public static final String DEFAULT_BACKGROUND_SETTING = "24252A";
+    public static String SAVE_BACKGROUND_SETTING = "24252A";
+
+    /* 颜色配置Key */
     public static final String SESSION_BG_COLOR = "backgroundColor";
+    public static final String SESSION_BG_FONT = "fontStyle";
+    public static final String SESSION_BG_BIG_COLOR = "bigColor";
 }

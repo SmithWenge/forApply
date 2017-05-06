@@ -61,8 +61,18 @@
             </div>
             <ul class="submenu">
                 <li>
-                    <a id="colour" href="">
-                        待定
+                    <a id="routeColor" href="${contextPath}/admin/system/routeColor.action">
+                        字体颜色
+                    </a>
+                </li>
+                <li>
+                    <a id="routeFont" href="${contextPath}/admin/system/routeFont.action">
+                        字体风格
+                    </a>
+                </li>
+                <li>
+                    <a id="routeBig" href="${contextPath}/admin/system/routeBig.action">
+                        背景颜色
                     </a>
                 </li>
             </ul>

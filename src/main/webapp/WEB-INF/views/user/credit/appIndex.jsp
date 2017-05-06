@@ -61,6 +61,25 @@
     font-family: "微软雅黑";
     font-weight: 100;
   }
+
+
+  <c:if test="${bigColor != null}">
+  body{background: #${bigColor}}
+  </c:if>
+
+  <c:if test="${backgroundColor != null}">
+  .tit{color: #${backgroundColor}}
+  .selected{color: #${backgroundColor}}
+  .brwData{border: solid 2px #${backgroundColor}}
+  .brwData a{color: #${backgroundColor}}
+  .brwData a:hover{color: #${backgroundColor}; border: solid #${backgroundColor} 5px}
+  </c:if>
+
+  <c:if test="${fontStyle != null}">
+  .tit{font-family: "${fontStyle}";}
+  .selected{font-family: "${fontStyle}";}
+  p{font-family: "${fontStyle}";}
+  </c:if>
 </style>
 <div class="header">
   <h1 class="tit"><i>百融金融&nbsp;&nbsp;&nbsp;极速审批</i></h1>

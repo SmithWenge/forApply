@@ -54,6 +54,19 @@
         width: 10vw;
     }
 
+    <c:if test="${bigColor != null}">
+    body{background: #${bigColor}}
+    </c:if>
+
+    <c:if test="${backgroundColor != null}">
+    .tit{color: #${backgroundColor}}
+    label{color: #${backgroundColor}}
+    </c:if>
+
+    <c:if test="${fontStyle != null}">
+    .tit{font-family: "${fontStyle}";}
+    p{font-family: "${fontStyle}";}
+    </c:if>
 </style>
 <div class="content">
     <form class="form-horizontal" action="${contextPath}/user/credit/add.action" method="post" id="creditAddForm">
