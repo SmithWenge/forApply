@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="${contextPath}/static/images/logo.jpg" />
+    <link rel="shortcut icon" href="${contextPath}/static/images/icon.png" />
     <link rel="stylesheet" href="${contextPath}/static/login/css/style.css">
 </head>
 
@@ -20,7 +20,7 @@
 <div class="container">
     <div class="profile">
         <button class="profile__avatar" id="toggleProfile">
-            <img src="${contextPath}/static/images/caifeng.jpg" alt="Avatar" />
+            <img src="${contextPath}/static/images/icon.png" alt="Avatar" />
         </button>
         <div class="profile__form">
             <div class="profile__fields">

@@ -97,25 +97,20 @@
           <button type="submit" class="btn btn-default" onclick="document.creditSearchForm.action='${contextPath}/admin/creditList/searchOutput.action';document.creditSearchForm.submit();">导出</button>
         </form>
       </li>
-
-      <a href="${contextPath}/admin/creditList/allOutput.action" style="float: right; margin-top: 2px;">
-        <button type="button" class="btn btn-danger" id="allOutput" style="margin-top: 0px; margin-bottom: 0px;">导出所有</button>
-      </a>
-      <li role="presentation" style="float: right; margin-top: 2px;">
-        <button type="button" class="btn btn-warning navbar-btn" id="batchPass" style="margin-top: 0px; margin-bottom: 0px;">选中审核通过</button>
-      </li>
-      <li role="presentation" style="float: right; margin-top: 2px;">
-        <button type="button" class="btn btn-warning navbar-btn" id="batchUnPass" style="margin-top: 0px; margin-bottom: 0px;">选中审核不通过</button>
-      </li>
-      <li role="presentation" style="float: right; margin-top: 2px;">
-        <button type="button" class="btn btn-warning navbar-btn" id="batchOutput" style="margin-top: 0px; margin-bottom: 0px;">选中导出</button>
-      </li>
     </ul>
   </div>
   <div class="panel-body">
-    <input type="button" value="全选" id="All"/>
-    <input type="button" value="不选" id="uncheck"/>
-    <input type="button" value="反选" id="othercheck"/>
+    <div class="row" style="margin-left: 1px; margin-right: 1px; margin-top: 0px">
+      <a href="${contextPath}/admin/creditList/allOutput.action" style="float: right; margin-top: 8px; margin-bottom: 0px;">
+        <button type="button" class="btn btn-danger" id="allOutput">导出所有</button>
+      </a>
+      <button type="button" style="float: right" class="btn btn-warning navbar-btn" id="batchPass" style="margin-top: 0px; margin-bottom: 0px;">选中审核通过</button>
+      <button type="button" style="float: right" class="btn btn-warning navbar-btn" id="batchUnPass" style="margin-top: 0px; margin-bottom: 0px;">选中审核不通过</button>
+      <button type="button" style="float: right" class="btn btn-warning navbar-btn" id="batchOutput" style="margin-top: 0px; margin-bottom: 0px;">选中导出</button>
+      <button type="button" class="btn btn-success navbar-btn" id="All">全选</button>
+      <button type="button" class="btn btn-success navbar-btn" id="uncheck">不选</button>
+      <button type="button" class="btn btn-success navbar-btn" id="othercheck">反选</button>
+    </div>
     <div class="row" style="margin-top: 5px;">
       <div class="col-md-12">
         <table class="table" id="paginationTable" align="center">
