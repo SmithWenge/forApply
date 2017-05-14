@@ -17,73 +17,96 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/admin/system")
 public class SystemController {
 
-    @RequestMapping(value = "/routeColor", method = RequestMethod.GET)
+    @RequestMapping(value = "/routeFontColor", method = RequestMethod.GET)
     public String routeColor() {
 
         return "/admin/system/color";
     }
 
-    @RequestMapping(value = "/routeFont", method = RequestMethod.GET)
+    @RequestMapping(value = "/routeFontStyle", method = RequestMethod.GET)
     public String routeFont() {
 
         return "/admin/system/font";
     }
 
-    @RequestMapping(value = "/routeBig", method = RequestMethod.GET)
+    @RequestMapping(value = "/routeBackGround", method = RequestMethod.GET)
     public String routeBig() {
 
         return "/admin/system/grund";
     }
 
-    @RequestMapping(value = "/colorDefault", method = RequestMethod.GET)
-    public String colorDefault(HttpServletRequest req, RedirectAttributes redirectAttributes) {
-        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_BG_COLOR, ConstantFields.DEFAULT_BACKGROUND_COLOR_SETTING);
+    @RequestMapping(value = "/routeJiange", method = RequestMethod.GET)
+    public String routeJiange() {
+
+        return "/admin/system/jiange";
+    }
+
+    @RequestMapping(value = "/backGroundColorDefault", method = RequestMethod.GET)
+    public String backGroundColorDefault(HttpServletRequest req, RedirectAttributes redirectAttributes) {
+        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_BACKGROUND_COLOR, ConstantFields.DEFAULT_BACKGROUND_SETTING);
         redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
 
+        return "/admin/system/grund";
+    }
+
+    @RequestMapping(value = "/fontStyleDefault", method = RequestMethod.GET)
+    public String fontStyleDefault(HttpServletRequest req, RedirectAttributes redirectAttributes) {
+        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_FONT_STYLE, ConstantFields.DEFAULT_FONT_STYLE_SETTING);
+
+        redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
+        return "/admin/system/font";
+    }
+
+    @RequestMapping(value = "/fontColorDefault", method = RequestMethod.GET)
+    public String fontColorDefault(HttpServletRequest req, RedirectAttributes redirectAttributes) {
+        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_FONT_COLOR, ConstantFields.DEFAULT_FONT_COLOR_SETTING);
+
+        redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
         return "/admin/system/color";
     }
 
-    @RequestMapping(value = "/fontDefault", method = RequestMethod.GET)
-    public String fontDefault(HttpServletRequest req, RedirectAttributes redirectAttributes) {
-        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_BG_FONT, ConstantFields.DEFAULT_BACKGROUND_FONT_SETTING);
+    @RequestMapping(value = "/jiangeColorDefault", method = RequestMethod.GET)
+    public String jiangeColorDefault(HttpServletRequest req, RedirectAttributes redirectAttributes) {
+        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_JIANGE_COLOR, ConstantFields.DEFAULT_JIANGE_SETTING);
 
         redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
-        return "/admin/system/font";
+        return "/admin/system/jiange";
     }
 
-    @RequestMapping(value = "/bigColorDefault", method = RequestMethod.GET)
-    public String bigColorDefault(HttpServletRequest req, RedirectAttributes redirectAttributes) {
-        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_BG_BIG_COLOR, ConstantFields.DEFAULT_BACKGROUND_SETTING);
-
-        redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
-        return "/admin/system/font";
-    }
-
-    @RequestMapping(value = "/colorChange", method = RequestMethod.POST)
+    @RequestMapping(value = "/fontColorChange", method = RequestMethod.POST)
     public String fontChange(@RequestParam("configColor") String configColor,HttpServletRequest req, RedirectAttributes redirectAttributes) {
-        ConstantFields.SAVE_BACKGROUND_COLOR_SETTING = configColor;
+        ConstantFields.SAVE_FONT_COLOR_SETTING = configColor;
 
-        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_BG_COLOR, configColor);
+        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_FONT_COLOR, configColor);
         redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
         return "/admin/system/color";
 
     }
 
-    @RequestMapping(value = "/fontChange", method = RequestMethod.POST)
+    @RequestMapping(value = "/fontStyleChange", method = RequestMethod.POST)
     public String colorChange(@RequestParam("configFont") String configFont,HttpServletRequest req, RedirectAttributes redirectAttributes) {
-        ConstantFields.SAVE_BACKGROUND_FONT_SETTING = configFont;
+        ConstantFields.SAVE_FONT_STYLE_SETTING = configFont;
 
-        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_BG_FONT, configFont);
+        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_FONT_STYLE, configFont);
         redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
         return "/admin/system/font";
     }
 
-    @RequestMapping(value = "/BigColorChange", method = RequestMethod.POST)
-    public String BigColorChange(@RequestParam("configBigColor") String configBigColor,HttpServletRequest req, RedirectAttributes redirectAttributes) {
-        ConstantFields.SAVE_BACKGROUND_SETTING = configBigColor;
+    @RequestMapping(value = "/backGroundColorChange", method = RequestMethod.POST)
+    public String BigColorChange(@RequestParam("configColor") String configColor,HttpServletRequest req, RedirectAttributes redirectAttributes) {
+        ConstantFields.SAVE_BACKGROUND_SETTING = configColor;
 
-        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_BG_BIG_COLOR, configBigColor);
+        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_BACKGROUND_COLOR, configColor);
         redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
         return "/admin/system/grund";
+    }
+
+    @RequestMapping(value = "/jiangeColorChange", method = RequestMethod.POST)
+    public String jiangeColorChange(@RequestParam("configColor") String configColor,HttpServletRequest req, RedirectAttributes redirectAttributes) {
+        ConstantFields.SAVE_JIANGE_SETTING = configColor;
+
+        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_JIANGE_COLOR, configColor);
+        redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
+        return "/admin/system/jiange";
     }
 }

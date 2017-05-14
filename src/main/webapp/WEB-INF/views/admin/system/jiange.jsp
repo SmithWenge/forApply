@@ -7,9 +7,9 @@
   <div class="panel-heading" style="padding-bottom: 0px; padding-top: 0px; padding-left: 0px; border-radius: 0px;">
     <ul class="nav nav-pills">
       <li role="presentation">
-        <a href="${contextPath}/admin/system/routeBackGround.action"><span class="glyphicon glyphicon-map-marker"></span> &nbsp;申请页面背景颜色配置</a>
+        <a href="${contextPath}/admin/system/routeJiange.action"><span class="glyphicon glyphicon-map-marker"></span> &nbsp;间隔标题背景颜色配置</a>
       </li>
-      <a href="${contextPath}/admin/system/backGroundColorDefault.action" style="float: right; margin-top: 2px;">
+      <a href="${contextPath}/admin/system/jiangeColorDefault.action" style="float: right; margin-top: 2px;">
         <button type="button" class="btn btn-danger" id="allOutput" style="margin-top: 0px; margin-bottom: 0px;">恢复默认设置</button>
       </a>
     </ul>
@@ -18,18 +18,18 @@
     <dl class="dl-horizontal">
       <dt>当前配置的颜色</dt>
       <dd>
-        <c:if test="${backgroundColor == null}" >
-          <div style="width: 85%; height: 102px; background-color: #24252A; border: 1px solid black"></div>
+        <c:if test="${jiangeColor == null}" >
+          <div style="width: 85%; height: 102px; background-color: #3f3f3f; border: 1px solid black"></div>
         </c:if>
-        <c:if test="${backgroundColor != null}" >
-         <div style="width: 85%; height: 102px; background-color: ${backgroundColor}; border: 1px solid black"></div>
+        <c:if test="${jiangeColor != null}" >
+          <div style="width: 85%; height: 102px; background-color: ${jiangeColor}; border: 1px solid black"></div>
         </c:if>
       </dd>
-      <form class="form" action="${contextPath}/admin/system/backGroundColorChange.action" method="post" style="margin-top: 50px">
+      <form class="form" action="${contextPath}/admin/system/jiangeColorChange.action" method="post" style="margin-top: 50px">
         <div style="margin-left: 180px">
           <div class="form-group">
             <label for="color" style="margin-top: 7px">请移动圆圈选择颜色</label>
-            <input style="width: 10%;float: right;margin-right: 690px" type="text" id="color" name="configColor" value="#24252A" class="form-control"/>
+            <input style="width: 10%;float: right;margin-right: 690px" type="text" id="color" name="configColor" value="#3f3f3f" class="form-control"/>
           </div>
           <div id="colorpicker"></div>
         </div>

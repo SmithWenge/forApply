@@ -36,15 +36,18 @@ public class ConstantFields {
     public static final String CONFIG_SUCCESS_MESSAGE = "配置成功";
 
     /* 默认配置的背景色 */
-    public static final String DEFAULT_BACKGROUND_COLOR_SETTING = " FFFECE";
-    public static String SAVE_BACKGROUND_COLOR_SETTING = " FFFECE";
-    public static final String DEFAULT_BACKGROUND_FONT_SETTING = "微软雅黑";
-    public static String SAVE_BACKGROUND_FONT_SETTING = "微软雅黑";
-    public static final String DEFAULT_BACKGROUND_SETTING = "24252A";
-    public static String SAVE_BACKGROUND_SETTING = "24252A";
+    public static final String DEFAULT_FONT_COLOR_SETTING = " #caa475";
+    public static String SAVE_FONT_COLOR_SETTING = " #caa475";
+    public static final String DEFAULT_FONT_STYLE_SETTING = "微软雅黑";
+    public static String SAVE_FONT_STYLE_SETTING = "微软雅黑";
+    public static final String DEFAULT_BACKGROUND_SETTING = "#24252A";
+    public static String SAVE_BACKGROUND_SETTING = "#24252A";
+    public static final String DEFAULT_JIANGE_SETTING = "#3f3f3f";
+    public static String SAVE_JIANGE_SETTING = "#3f3f3f";
 
     /* 颜色配置Key */
-    public static final String SESSION_BG_COLOR = "backgroundColor";
-    public static final String SESSION_BG_FONT = "fontStyle";
-    public static final String SESSION_BG_BIG_COLOR = "bigColor";
+    public static final String SESSION_BACKGROUND_COLOR = "backgroundColor";
+    public static final String SESSION_FONT_STYLE = "fontStyle";
+    public static final String SESSION_FONT_COLOR = "fontColor";
+    public static final String SESSION_JIANGE_COLOR = "jiangeColor";
 }

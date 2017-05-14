@@ -6,9 +6,9 @@
   <div class="panel-heading" style="padding-bottom: 0px; padding-top: 0px; padding-left: 0px; border-radius: 0px;">
     <ul class="nav nav-pills">
       <li role="presentation">
-        <a href="${contextPath}/admin/system/routeFont.action"><span class="glyphicon glyphicon-map-marker"></span> &nbsp;申请页面字体风格设置</a>
+        <a href="${contextPath}/admin/system/routeFontStyle.action"><span class="glyphicon glyphicon-map-marker"></span> &nbsp;申请页面字体风格设置</a>
       </li>
-      <a href="${contextPath}/admin/system/fontDefault.action" style="float: right; margin-top: 2px;">
+      <a href="${contextPath}/admin/system/fontStyleDefault.action" style="float: right; margin-top: 2px;">
         <button type="button" class="btn btn-danger" id="allOutput" style="margin-top: 0px; margin-bottom: 0px;">恢复默认设置</button>
       </a>
     </ul>
@@ -19,7 +19,7 @@
       <dd>
         <h3 style="width: 85%; height: 102px; font-family: ${fontStyle};">百融金融 极速审批 深圳前海采风互联网金融服务有限公司</h3>
       </dd>
-      <form action="${contextPath}/admin/system/fontChange.action" method="post" style="margin-top: 50px">
+      <form action="${contextPath}/admin/system/fontColorChange.action" method="post" style="margin-top: 50px">
         <dt>
           第一种字体风格
           <input type="radio" name="configFont" value="微软雅黑" checked>
