@@ -44,10 +44,13 @@ public class ConstantFields {
     public static String SAVE_BACKGROUND_SETTING = "#24252A";
     public static final String DEFAULT_JIANGE_SETTING = "#3f3f3f";
     public static String SAVE_JIANGE_SETTING = "#3f3f3f";
+    public static final String DEFAULT_TIT_BACK_SETTING = "#969696";
+    public static String SAVE_TIT_BACK_SETTING = "#969696";
 
     /* 颜色配置Key */
     public static final String SESSION_BACKGROUND_COLOR = "backgroundColor";
     public static final String SESSION_FONT_STYLE = "fontStyle";
     public static final String SESSION_FONT_COLOR = "fontColor";
     public static final String SESSION_JIANGE_COLOR = "jiangeColor";
+    public static final String SESSION_TIT_BACK_COLOR = "titBackColor";
 }

@@ -71,7 +71,6 @@
     <c:if test="${fontColor != null}">
     .tit{color: ${fontColor}}
     label{color: ${fontColor}}
-    .jiange{color: ${fontColor}}
     </c:if>
 
     <c:if test="${fontStyle != null}">
@@ -79,6 +78,14 @@
     p{font-family: "${fontStyle}";}
     .jiange{font-family: "${fontStyle}";}
     label{font-family: "${fontStyle}";}
+    </c:if>
+
+    <c:if test="${titBackColor != null}">
+    .jiange{color: ${titBackColor}}
+    </c:if>
+
+    <c:if test="${jiangeColor != null}">
+    .jiange{background: ${jiangeColor}}
     </c:if>
 </style>
 <div class="content">

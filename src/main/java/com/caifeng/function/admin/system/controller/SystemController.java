@@ -41,6 +41,12 @@ public class SystemController {
         return "/admin/system/jiange";
     }
 
+    @RequestMapping(value = "/routeTitBack", method = RequestMethod.GET)
+    public String routeTitBack() {
+
+        return "/admin/system/titBack";
+    }
+
     @RequestMapping(value = "/backGroundColorDefault", method = RequestMethod.GET)
     public String backGroundColorDefault(HttpServletRequest req, RedirectAttributes redirectAttributes) {
         req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_BACKGROUND_COLOR, ConstantFields.DEFAULT_BACKGROUND_SETTING);
@@ -71,6 +77,14 @@ public class SystemController {
 
         redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
         return "/admin/system/jiange";
+    }
+
+    @RequestMapping(value = "/titBackColorDefault", method = RequestMethod.GET)
+    public String titBackColorDefault(HttpServletRequest req, RedirectAttributes redirectAttributes) {
+        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_TIT_BACK_COLOR, ConstantFields.DEFAULT_TIT_BACK_SETTING);
+
+        redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
+        return "/admin/system/titBack";
     }
 
     @RequestMapping(value = "/fontColorChange", method = RequestMethod.POST)
@@ -108,5 +122,14 @@ public class SystemController {
         req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_JIANGE_COLOR, configColor);
         redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
         return "/admin/system/jiange";
+    }
+
+    @RequestMapping(value = "/titBackColorChange", method = RequestMethod.POST)
+    public String titBackColorChange(@RequestParam("configColor") String configColor,HttpServletRequest req, RedirectAttributes redirectAttributes) {
+        ConstantFields.SAVE_TIT_BACK_SETTING = configColor;
+
+        req.getSession().getServletContext().setAttribute(ConstantFields.SESSION_TIT_BACK_COLOR, configColor);
+        redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.CONFIG_SUCCESS_MESSAGE);
+        return "/admin/system/titBack";
     }
 }

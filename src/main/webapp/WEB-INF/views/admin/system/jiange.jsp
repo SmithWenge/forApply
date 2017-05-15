@@ -29,7 +29,7 @@
         <div style="margin-left: 180px">
           <div class="form-group">
             <label for="color" style="margin-top: 7px">请移动圆圈选择颜色</label>
-            <input style="width: 10%;float: right;margin-right: 690px" type="text" id="color" name="configColor" value="#3f3f3f" class="form-control"/>
+            <input style="width: 10%;float: right;margin-right: 670px" type="text" id="color" name="configColor" value="#3f3f3f" class="form-control"/>
           </div>
           <div id="colorpicker"></div>
         </div>
