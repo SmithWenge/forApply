@@ -197,12 +197,8 @@
     <div><p>© 2017 版权所有 深圳前海采风互联网金融服务有限公司</p></div>
 </div>
 
-
-
 <script type="text/javascript" src="${contextPath}/static/plugins/jquery/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="${contextPath}/static/plugins/jquery-validate/jquery.validate.js"></script>
-<script type="text/javascript" src="${contextPath}/static/plugins/confirm/jquery.confirm.js"></script>
-<script type="text/javascript" src="${contextPath}/static/plugins/cropper/cropper.js"></script>
 <script type="text/javascript">
     $(function () {
 
@@ -254,27 +250,33 @@
                     required: false,
                     shuzi: true
                 },
-                message:{
-                    userName: {
-                        required: "请输入您的真实姓名"
-                    },
-                    userTel: {
-                        required: "请填写座机号码或手机号码",
-                        minlength: "电话号码的长度为8到16",
-                        maxlength: "电话号码的长度为8到16"
-                    },
-                    userAge: {
-                        required: "请输入您的真实年龄"
-                    },
-                    userPost: {
-                        required: "请输入您的岗位职务"
-                    },
-                    zhimaNum: {
-                        required: "请输入您的芝麻信用分"
-                    },
-                    huabeiLimit: {
-                        required: "请输入您的花呗额度"
-                    }
+                workUnit: {
+                    required: true
+                }
+            },
+            messages: {
+                userName: {
+                    required: "请输入您的真实姓名"
+                },
+                userTel: {
+                    required: "请填写座机号码或手机号码",
+                    minlength: "电话号码的长度为8到16",
+                    maxlength: "电话号码的长度为8到16"
+                },
+                userAge: {
+                    required: "请输入您的真实年龄"
+                },
+                userPost: {
+                    required: "请输入您的岗位职务"
+                },
+                zhimaNum: {
+                    required: "请输入您的芝麻信用分"
+                },
+                huabeiLimit: {
+                    required: "请输入您的花呗额度"
+                },
+                workUnit: {
+                    required: "请如实输入您的工作单位"
                 }
             }
         });
