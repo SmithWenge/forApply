@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/include/app/header.jsp"%>
 
 <div class="header">
-    <h1 class="tit" style="font-size: 65px"><i>百融金融 &nbsp;&nbsp;极速审批</i></h1>
+    <h1 class="tit" style="font-size: 65px"><i>采风金融 &nbsp;&nbsp;极速审批</i></h1>
 
     <hr class="tithr" />
     <p><span class="wht"><i>第一时间  </i></span>为您审批，已有<span class="wht"><i>1000000+</i></span>人申请</p>
@@ -64,6 +64,12 @@
         font-weight: 100;
     }
 
+    label.error {
+        padding-left: 0px;
+        margin-top: 10px;
+        color: #ff0000;
+    }
+
     <c:if test="${backgroundColor != null}">
     body{background: ${backgroundColor}}
     </c:if>
@@ -94,7 +100,7 @@
         <div class="form-group">
             <label for="userName" class="col-md-4 control-label">姓名</label>
             <div class="col-md-5">
-                <input style="background-color:transparent; border-width:0px;" type="text" class="form-control" name="userName" id="userName" placeholder="请输入您的真实姓名                                                   (*必填*)">
+                <input style="background-color:transparent; border-width:0px;" type="text" class="form-control" name="userName" id="userName" placeholder="请输入您的真实姓名                                                 (*必填*)">
             </div>
         </div>
         <hr class="formhr" />
@@ -108,7 +114,14 @@
         <div class="form-group">
             <label for="userTel" class="col-md-4 control-label">手机</label>
             <div class="col-md-5">
-                <input style="background-color:transparent; border-width:0px;" type="text" class="form-control" name="userTel" id="userTel" placeholder="请输入您的手机号码                                                   (*必填*)">
+                <input style="background-color:transparent; border-width:0px;" type="text" class="form-control" name="userTel" id="userTel" placeholder="请输入您的手机号码                                                 (*必填*)">
+            </div>
+        </div>
+        <hr class="formhr" />
+        <div class="form-group">
+            <label for="qq" class="col-md-4 control-label">QQ</label>
+            <div class="col-md-5">
+                <input style="background-color:transparent; border-width:0px;" type="text" class="form-control" name="qq" id="qq" placeholder="请输入您的QQ账号                                                   (*必填*)">
             </div>
         </div>
         <hr class="formhr" />
@@ -223,6 +236,10 @@
                     maxlength: 16,
                     dianhua: true
                 },
+                qq: {
+                    required: true,
+                    shuzi: true
+                },
                 userAge: {
                     required: true,
                     shuzi: true
@@ -262,6 +279,9 @@
                     required: "请填写座机号码或手机号码",
                     minlength: "电话号码的长度为8到16",
                     maxlength: "电话号码的长度为8到16"
+                },
+                qq: {
+                    required: "请填写正确格式的QQ账号"
                 },
                 userAge: {
                     required: "请输入您的真实年龄"

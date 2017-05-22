@@ -137,7 +137,7 @@ public class CreditListController {
 
         try {
             WritableWorkbook workbook = factory.createExcel(new FileOutputStream(file),
-                    new Excel("申请列表（检索）", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
+                    new Excel("申请列表（检索）", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "QQ", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
             workbook.write();
             workbook.close();
 
@@ -179,7 +179,7 @@ public class CreditListController {
 
         try {
             WritableWorkbook workbook = factory.createExcel(new FileOutputStream(file),
-                    new Excel("申请列表", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
+                    new Excel("申请列表", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "QQ", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
             workbook.write();
             workbook.close();
 
@@ -263,7 +263,7 @@ public class CreditListController {
 
         try {
             WritableWorkbook workbook = factory.createExcel(new FileOutputStream(file),
-                    new Excel("申请列表", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
+                    new Excel("申请列表", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "QQ", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
             workbook.write();
             workbook.close();
 

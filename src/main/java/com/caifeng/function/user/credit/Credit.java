@@ -34,6 +34,15 @@ public class Credit {
     private String listTimeStr;
     private String userSexStr;
     private String listStateStr;
+    private String qq;
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
 
     public String getListStateStr() {
         return listStateStr;

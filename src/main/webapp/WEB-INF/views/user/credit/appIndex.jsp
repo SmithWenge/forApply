@@ -82,7 +82,7 @@
   </c:if>
 </style>
 <div class="header">
-  <h1 class="tit"><i>百融金融&nbsp;&nbsp;&nbsp;极速审批</i></h1>
+  <h1 class="tit"><i>采风金融&nbsp;&nbsp;&nbsp;极速审批</i></h1>
   <hr />
 </div>
 <div class="content">

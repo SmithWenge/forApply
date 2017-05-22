@@ -23,28 +23,28 @@
     <div class="panel-body">
         <table class="table table-hover">
             <tr>
-                <th>贷款业务状态</th>
-                <td>${credit.listStateStr}</td>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
                 <th>贷款号</th>
                 <td>${credit.creditListId}</td>
+                <th>贷款数额</th>
+                <td>${credit.creditAmount}</td>
+                <th>贷款业务状态</th>
+                <td>${credit.listStateStr}</td>
+            </tr>
+            <tr>
                 <th>姓名</th>
                 <td>${credit.userName}</td>
                 <th>性别</th>
                 <td>${credit.userSexStr}</td>
-            </tr>
-            <tr>
-                <th>贷款数额</th>
-                <td>${credit.creditAmount}</td>
                 <th>年龄</th>
                 <td>${credit.userAge}</td>
+            </tr>
+            <tr>
                 <th>电话</th>
                 <td>${credit.userTel}</td>
+                <th>QQ</th>
+                <td>${credit.qq}</td>
+                <th></th>
+                <th></th>
             </tr>
             <tr>
                 <th>工作单位</th>

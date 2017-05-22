@@ -31,7 +31,7 @@ public class CreditListRepository implements CreditListRepositoryI {
 
     @Override
     public Page<Credit> selectForPage(Credit credit, Pageable pageable) {
-        StringBuilder sql = new StringBuilder("SELECT creditListId, creditAmount, userName, userTel, userSex, userAge, workUnit, userPost, unitTel, zhimaNum, huabeiLimit, jiebeiLimit, creditCardLimit, jiedaibaoLimit, listState, listDate, listTime FROM apply_creditlist WHERE deleteFlag = 0");
+        StringBuilder sql = new StringBuilder("SELECT creditListId, creditAmount, userName, userTel, qq, userSex, userAge, workUnit, userPost, unitTel, zhimaNum, huabeiLimit, jiebeiLimit, creditCardLimit, jiedaibaoLimit, listState, listDate, listTime FROM apply_creditlist WHERE deleteFlag = 0");
         List<Object> list = new ArrayList<Object>();
 
         Optional<Credit> optional = Optional.fromNullable(credit);
@@ -83,6 +83,7 @@ public class CreditListRepository implements CreditListRepositoryI {
             credit.setHuabeiLimit(resultSet.getString("huabeiLimit"));
             credit.setListDateStr(resultSet.getString("listDate"));
             credit.setListTimeStr(resultSet.getString("listTime"));
+            credit.setQq(resultSet.getString("qq"));
 
             int userSex = resultSet.getInt("userSex");
             int listState = resultSet.getInt("listState");
@@ -109,7 +110,7 @@ public class CreditListRepository implements CreditListRepositoryI {
 
     @Override
     public Credit select(String creditListId) {
-        String sql = "SELECT creditListId, creditAmount, userName, userTel, userSex, userAge, workUnit, userPost, unitTel, zhimaNum, huabeiLimit, jiebeiLimit, creditCardLimit, jiedaibaoLimit, listState, listDate, listTime FROM apply_creditlist WHERE deleteFlag = 0 AND creditListId = ?";
+        String sql = "SELECT creditListId, creditAmount, userName, userTel, qq, userSex, userAge, workUnit, userPost, unitTel, zhimaNum, huabeiLimit, jiebeiLimit, creditCardLimit, jiedaibaoLimit, listState, listDate, listTime FROM apply_creditlist WHERE deleteFlag = 0 AND creditListId = ?";
         Object[] args = {
                 creditListId
         };
@@ -146,7 +147,7 @@ public class CreditListRepository implements CreditListRepositoryI {
 
     @Override
     public List<Credit> selectForSearchExport(Credit credit) {
-        StringBuilder sql = new StringBuilder("SELECT creditListId, creditAmount, userName, userTel, userSex, userAge, workUnit, userPost, unitTel, zhimaNum, huabeiLimit, jiebeiLimit, creditCardLimit, jiedaibaoLimit, listState, listDate, listTime FROM apply_creditlist WHERE deleteFlag = 0");
+        StringBuilder sql = new StringBuilder("SELECT creditListId, creditAmount, userName, userTel, qq, userSex, userAge, workUnit, userPost, unitTel, zhimaNum, huabeiLimit, jiebeiLimit, creditCardLimit, jiedaibaoLimit, listState, listDate, listTime FROM apply_creditlist WHERE deleteFlag = 0");
         List<Object> list = new ArrayList<Object>();
 
         Optional<Credit> optional = Optional.fromNullable(credit);

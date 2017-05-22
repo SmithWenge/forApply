@@ -16,7 +16,7 @@ public class CreditRepository implements CreditRepositoryI {
 
     @Override
     public Boolean insert(Credit credit) {
-        String sql = "INSERT INTO apply_creditlist (creditListId, creditAmount, userName, userTel, userSex, userAge, workUnit, userPost, unitTel, zhimaNum, huabeiLimit, jiebeiLimit, creditCardLimit, jiedaibaoLimit, listState, listTime, listDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO apply_creditlist (creditListId, creditAmount, userName, userTel, userSex, userAge, workUnit, userPost, unitTel, qq, zhimaNum, huabeiLimit, jiebeiLimit, creditCardLimit, jiedaibaoLimit, listState, listTime, listDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Object[] args = {
                 PrimaryKeyUtil.uuidPrimaryKey(),
                 credit.getCreditAmount(),
@@ -27,6 +27,7 @@ public class CreditRepository implements CreditRepositoryI {
                 credit.getWorkUnit(),
                 credit.getUserPost(),
                 credit.getUnitTel(),
+                credit.getQq(),
                 credit.getZhimaNum(),
                 credit.getHuabeiLimit(),
                 credit.getJiebeiLimit(),
