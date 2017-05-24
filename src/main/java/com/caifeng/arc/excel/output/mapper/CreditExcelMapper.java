@@ -16,7 +16,7 @@ public class CreditExcelMapper implements ExcelMapper<Credit> {
     @Override
     public void mapToExcel(WritableSheet sheet, Credit credit, WritableCellFormat wcf, int rowNum) {
         try {
-            sheet.addCell(new Label(0, rowNum, credit.getCreditListId()));
+            sheet.addCell(new Label(0, rowNum, String.valueOf(rowNum)));
             sheet.addCell(new Label(1, rowNum, credit.getUserName()));
             sheet.addCell(new Label(2, rowNum, credit.getUserSexStr()));
             sheet.addCell(new Label(3, rowNum, credit.getUserAge()));

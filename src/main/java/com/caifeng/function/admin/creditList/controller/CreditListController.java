@@ -137,7 +137,7 @@ public class CreditListController {
 
         try {
             WritableWorkbook workbook = factory.createExcel(new FileOutputStream(file),
-                    new Excel("申请列表（检索）", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "QQ", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
+                    new Excel("申请列表（检索）", 0), Arrays.asList("序号", "姓名", "性别", "年龄", "电话", "QQ", "金额", "审核进度", "单位全称", "职务", "单位电话", "芝麻信用分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝已借金额", "借贷时间"), records, new CreditExcelMapper());
             workbook.write();
             workbook.close();
 
@@ -179,7 +179,7 @@ public class CreditListController {
 
         try {
             WritableWorkbook workbook = factory.createExcel(new FileOutputStream(file),
-                    new Excel("申请列表", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "QQ", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
+                    new Excel("申请列表", 0), Arrays.asList("序号", "姓名", "性别", "年龄", "电话", "QQ", "金额", "审核进度", "单位全称", "职务", "单位电话", "芝麻信用分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝已借金额", "借贷时间"), records, new CreditExcelMapper());
             workbook.write();
             workbook.close();
 
@@ -253,6 +253,27 @@ public class CreditListController {
         return "redirect:/admin/creditList/routePage.action";
     }
 
+    @RequestMapping(value = "/batch/delete")
+    public String batchDelete(@RequestParam("batchId") String batchIds, HttpSession session, RedirectAttributes redirectAttributes) {
+        AdminUser logUser = (AdminUser) session.getAttribute(ConstantFields.SESSION_ADMIN_KEY);
+
+        try {
+            if (creditListService.batchDelete(batchIds, logUser)) {
+
+                redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.OPERATION_SUCCESS_MESSAGE);
+                return "redirect:/admin/creditList/routePage.action";
+            }
+        } catch (BatchRollbackException e) {
+            e.printStackTrace();
+
+            redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.OPERATION_FAILURE_MESSAGE);
+            return "redirect:/admin/creditList/routePage.action";
+        }
+
+        redirectAttributes.addFlashAttribute(ConstantFields.OPERATION_MESSAGE, ConstantFields.OPERATION_FAILURE_MESSAGE);
+        return "redirect:/admin/creditList/routePage.action";
+    }
+
     @RequestMapping(value = "/batch/output",method = RequestMethod.POST)
     public void batchOutput(HttpServletResponse response, @RequestParam("batchId") String batchIds, HttpSession session) throws BatchRollbackException{
         AdminUser logUser = (AdminUser)session.getAttribute(ConstantFields.SESSION_ADMIN_KEY);
@@ -263,7 +284,7 @@ public class CreditListController {
 
         try {
             WritableWorkbook workbook = factory.createExcel(new FileOutputStream(file),
-                    new Excel("申请列表", 0), Arrays.asList("贷款号", "姓名", "性别", "年龄", "电话", "QQ", "贷款数额", "贷款业务状态", "工作单位", "工作岗位", "单位电话", "芝麻信用积分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝额度", "借贷时间"), records, new CreditExcelMapper());
+                    new Excel("申请列表", 0), Arrays.asList("序号", "姓名", "性别", "年龄", "电话", "QQ", "金额", "审核进度", "单位全称", "职务", "单位电话", "芝麻信用分", "花呗额度", "借呗额度", "信用卡额度", "借贷宝已借金额", "借贷时间"), records, new CreditExcelMapper());
             workbook.write();
             workbook.close();
 

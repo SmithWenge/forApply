@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/include/app/header.jsp"%>
 
 <div class="header">
-    <h1 class="tit" style="font-size: 35px"><i>采风金融 &nbsp;极速审批</i></h1>
+    <h1 class="tit" style="font-size: 35px">采风金融 &nbsp;极速审批</h1>
 
     <hr class="tithr" />
     <p><span class="wht"><i>第一时间  </i></span>为您审批，已有<span class="wht"><i>1000000+</i></span>人申请</p>

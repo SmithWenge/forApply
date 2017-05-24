@@ -104,6 +104,7 @@
       <a href="${contextPath}/admin/creditList/allOutput.action" style="float: right; margin-top: 8px; margin-bottom: 0px;">
         <button type="button" class="btn btn-danger" id="allOutput">导出所有</button>
       </a>
+      <button type="button" style="float: right" class="btn btn-danger navbar-btn" id="batchDelete" style="margin-top: 0px; margin-bottom: 0px;">选中删除</button>
       <button type="button" style="float: right" class="btn btn-warning navbar-btn" id="batchPass" style="margin-top: 0px; margin-bottom: 0px;">选中审核通过</button>
       <button type="button" style="float: right" class="btn btn-warning navbar-btn" id="batchUnPass" style="margin-top: 0px; margin-bottom: 0px;">选中审核不通过</button>
       <button type="button" style="float: right" class="btn btn-warning navbar-btn" id="batchOutput" style="margin-top: 0px; margin-bottom: 0px;">选中导出</button>
@@ -255,6 +256,24 @@
       cancelButtonClass: "btn-default",
       dialogClass: "modal-dialog"
     }
+
+    $('#batchDelete').on('click', function () {
+      var actionPath = "${contextPath}/admin/creditList/batch/delete.action";
+      var $checkLength = $("[name = batchId]:checkbox").filter(":checked").length;
+      if ($checkLength > 0 ) {
+        $.confirm({
+          text: "您确定删除这些项目吗?",
+          confirm: function() {
+            $('#batchForm').attr('action', actionPath).submit();
+          },
+          cancel: function() {
+
+          }
+        });
+      } else {
+
+      }
+    });
 
     $('#batchPass').on('click', function () {
       var actionPath = "${contextPath}/admin/creditList/batch/pass.action";

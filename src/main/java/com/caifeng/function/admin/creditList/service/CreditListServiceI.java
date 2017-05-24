@@ -22,4 +22,5 @@ public interface CreditListServiceI {
     Boolean batchPass(String batchIds, AdminUser logUser) throws BatchRollbackException;
     Boolean batchUnPass(String batchIds, AdminUser logUser) throws BatchRollbackException;
     List<Credit> serchForBatchExport(String batchIds, AdminUser logUser) throws BatchRollbackException;
+    Boolean batchDelete(String batchIds, AdminUser logUser) throws BatchRollbackException;
 }

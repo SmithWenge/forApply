@@ -19,24 +19,24 @@
       <dd>
         <h3 style="width: 85%; height: 102px; font-family: ${fontStyle};">百融金融 极速审批 深圳前海采风互联网金融服务有限公司</h3>
       </dd>
-      <form action="${contextPath}/admin/system/fontColorChange.action" method="post" style="margin-top: 50px">
+      <form action="${contextPath}/admin/system/fontStyleChange.action" method="post" style="margin-top: 50px">
         <dt>
           第一种字体风格
-          <input type="radio" name="configFont" value="微软雅黑" checked>
+          <input type="radio" name="configFont" value="微软雅黑">
         </dt>
         <dd>
           <h3 style="width: 85%; height: 102px; font-family: 微软雅黑;">百融金融 极速审批 深圳前海采风互联网金融服务有限公司</h3>
         </dd>
         <dt>
           第二种字体风格
-          <input type="radio" name="configFont" value="SimSun" checked>
+          <input type="radio" name="configFont" value="SimSun">
         </dt>
         <dd>
           <h3 style="width: 85%; height: 102px; font-family: SimSun;">百融金融 极速审批 深圳前海采风互联网金融服务有限公司</h3>
         </dd>
         <dt>
           第三种字体风格
-          <input type="radio" name="configFont" value="SimHei" checked>
+          <input type="radio" name="configFont" value="SimHei">
         </dt>
         <dd>
           <h3 style=" width: 85%; height: 102px; font-family: SimHei;">百融金融 极速审批 深圳前海采风互联网金融服务有限公司</h3>

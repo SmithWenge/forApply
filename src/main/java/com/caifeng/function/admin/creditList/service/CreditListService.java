@@ -149,4 +149,23 @@ public class CreditListService implements CreditListServiceI {
             return list;
         }
     }
+
+    @Override
+    public Boolean batchDelete(String batchIds, AdminUser logUser) throws BatchRollbackException {
+        String[] courseIds = batchIds.split(",");
+        int successSum = 0;
+
+        for (String courseId : courseIds) {
+            successSum += creditListRepository.delete(courseId) == true ? 1 : 0;
+        }
+
+        if (courseIds.length != successSum) {
+            throw new BatchRollbackException();
+        } else {
+            LogContent logContent = new LogContent(logUser.getAdminUserName(), "批量删除贷款单，它们的ID为" + batchIds + "(以逗号隔开)", 2, 4);
+            logRepository.insertLog(logContent);
+
+            return true;
+        }
+    }
 }
