@@ -5,7 +5,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>采风金融</title>
+    <title>秦越金融</title>
     <link rel="shortcut icon" href="${contextPath}/static/images/icon.png" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
@@ -44,7 +44,7 @@
         </span>
         <br/>
         <span class="copy">
-            <span>© 2017 版权所有 深圳前海采风互联网金融服务有限公司</span>
+            <span>© 2017 版权所有 深圳前海秦越互联网金融服务有限公司</span>
         </span>
     </section>
 </div>
