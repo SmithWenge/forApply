@@ -2,7 +2,7 @@
 <%@include file="/WEB-INF/include/app/header.jsp"%>
 
 <div class="header">
-    <h1 class="tit" style="font-size: 35px">采风金融 &nbsp;极速审批</h1>
+    <h1 class="tit" style="font-size: 35px">秦越金融 &nbsp;极速审批</h1>
 
     <hr class="tithr" />
     <p><span class="wht"><i>第一时间  </i></span>为您审批，已有<span class="wht"><i>1000000+</i></span>人申请</p>
@@ -180,7 +180,7 @@
         </div>
     </form>
     <hr style="margin-top: 50px;margin-bottom:20px" />
-    <div><p>© 2017 版权所有 深圳前海采风互联网金融服务有限公司</p></div>
+    <div><p>© 2017 版权所有 深圳前海秦越互联网金融服务有限公司</p></div>
 </div>
 
 <script type="text/javascript" src="${contextPath}/static/plugins/jquery/jquery-3.1.1.js"></script>

@@ -9,6 +9,6 @@
     <link rel="shortcut icon" href="${contextPath}/static/images/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="${contextPath}/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <title>采风金融</title>
+    <title>秦越金融</title>
 </head>
 <body>
